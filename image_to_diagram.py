@@ -35,7 +35,13 @@ Use lowercase snake_case for node names. Do not include anything else except the
 """
 
 def image_to_diagram(image_path, prompt):
-    response = query_llava(prompt, image_path)
+    #response = query_llava(prompt, image_path)
+
+    response = """
+Nodes: ray_sensor_truck, ray_sensor_trailer1_left, ray_sensor_trailer1_right, ray_sensor_trailer2_left, ray_sensor_trailer2_right, laser_scan_truck, laser_scan_trailer1_left, laser_scan_trailer1_right, laser_scan_trailer2_left, laser_scan_trailer2_right, tf_tree, costmap_muxer, costmap_server, amcl, nav2_behavior_tree, robot_base
+Connections: ray_sensor_truck -> laser_scan_truck, ray_sensor_trailer1_left -> laser_scan_trailer1_left, ray_sensor_trailer1_right -> laser_scan_trailer1_right, ray_sensor_trailer2_left -> laser_scan_trailer2_left, ray_sensor_trailer2_right -> laser_scan_trailer2_right, laser_scan_truck -> costmap_muxer, laser_scan_trailer1_left -> costmap_muxer, laser_scan_trailer1_right -> costmap_muxer, laser_scan_trailer2_left -> costmap_muxer, laser_scan_trailer2_right -> costmap_muxer, tf_tree -> costmap_muxer, costmap_muxer -> costmap_server, costmap_server -> amcl, costmap_server -> nav2_behavior_tree, amcl -> nav2_behavior_tree, nav2_behavior_tree -> robot_base
+    """
+
     print("📤 LLaVA Response:\n", response)
 
     nodes, edges = extract_nodes_and_edges(response)
