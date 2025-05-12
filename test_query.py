@@ -19,5 +19,5 @@ def query_llava(prompt, image_path):
     return response.json()['response']
 
 # Test usage
-result = query_llava("What is in this image?", "sample_image2.jpg")
+result = query_llava("What is in this image?", "test_image2.jpg")
 print("Response from LLaVA:", result)
